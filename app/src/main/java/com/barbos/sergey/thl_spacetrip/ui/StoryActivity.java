@@ -17,7 +17,8 @@ import com.barbos.sergey.thl_spacetrip.R;
 
 public class StoryActivity extends AppCompatActivity {
 
-    public final static String TAG = StoryActivity.class.getSimpleName();
+    /*public final static String TAG = StoryActivity.class.getSimpleName();*/
+    public final static String TAG = "Sergey,ll check it now!";
     private TextView mTempView;
     private ImageView mImageView;
     private Button mButton1;
@@ -36,7 +37,7 @@ public class StoryActivity extends AppCompatActivity {
         mStory = new Story();
         Intent intent = getIntent();
         name = intent.getStringExtra(getString(R.string.nameKey));
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             name = "FRIEND";
         }
         Log.d(TAG, name);
@@ -49,7 +50,7 @@ public class StoryActivity extends AppCompatActivity {
         final Page page = mStory.getPages(pageNumber);
 
         mImageView.setImageResource(page.getmImageId());
-        String pageText = page.getmText();
+        String pageText;
         pageText = String.format(page.getmText(), name);
         mTempView.setText(pageText);
 
